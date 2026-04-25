@@ -3,7 +3,6 @@ from typing import List, Optional
 
 from app.domain.entities.service import ServiceEntity
 
-
 class IServiceRepository(ABC):
 
     @abstractmethod
