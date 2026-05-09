@@ -1,17 +1,17 @@
-class aoo(Exception):
+class NotFoundHandleException(Exception):
     pass
 
-class findHandleException(Exception):
+class FindHandleException(Exception):
     pass
 
-class alreadyExistsHandleException(Exception):
+class AlreadyExistsHandleException(Exception):
     pass
 
-class createHandleException(Exception):
+class CreateHandleException(Exception):
     pass
 
-class updateHandleException(Exception):
+class UpdateHandleException(Exception):
     pass
 
-class deleteHandleException(Exception):
+class DeleteHandleException(Exception):
     pass
