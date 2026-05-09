@@ -13,6 +13,9 @@ class ServiceRepository(IServiceRepository):
     async def get_user_id(self, id: int):
         return self.db.query(Service).filter(Service.id == id).first()
 
+    async def get_user_name(self, name: str):
+        return self.db.query(Service).filter(Service.name == name).first()
+
     async def create(self, service_data: ServiceCreate):
         new_service = Service(**service_data.dict())
         self.db.add(new_service)

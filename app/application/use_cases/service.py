@@ -30,9 +30,10 @@ class Service:
         return to_service_response(service)
     
     async def create_service(self, service_data: ServiceCreate):
-        verify_service = await self.repository.get_user_id(service_data.id)
+        verify_service = await self.repository.get_user_name(service_data.name)
         if verify_service:
             raise AlreadyExistsHandleException("Service already exists")
+        
         service = await self.repository.create(service_data)
         if not service:
             raise CreateHandleException("Failed to create service")
