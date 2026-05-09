@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 
+from app.interface.api.service_controller import router as service_router
+
 app = FastAPI()
 
-@app.get('/home')
-async def home():
-    return 'Testando rota'
+app.include_router(service_router)
