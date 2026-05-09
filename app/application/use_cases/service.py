@@ -12,7 +12,6 @@ from app.domain.exceptions.exception import (
 from app.infrastructure.repositories.service_repository_implementation import ServiceRepository
 from app.interface.mappers.service_mapper import to_service_response
 from app.interface.schemas.service_schema import ServiceCreate, ServiceUpdate
-from app.interface.handler.exception_service import ServiceExceptionHandler
 
 class Service:
     def __init__(self, repository: ServiceRepository):

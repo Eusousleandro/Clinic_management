@@ -2,7 +2,7 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-RUN pip install poetry uvicorn fastapi sqlalchemy dotenv
+RUN pip install poetry uvicorn fastapi sqlalchemy dotenv pymysql
 
 COPY pyproject.toml poetry.lock* ./
 COPY . .  

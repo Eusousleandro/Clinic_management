@@ -1,4 +1,4 @@
-from ast import List
+from typing import List
 
 from fastapi import APIRouter, Depends
 
@@ -11,40 +11,35 @@ router = APIRouter(prefix='/service', tags=['service'])
 
 @router.get('/', response_model=List[ServiceResponse])
 async def get_services(
-    current_user: str = Depends(),
     service: Service = Depends(ServiceDependency.get_depedency_service)
 ):
-    return await service.get_services(current_user, service)
+    return await service.get_services()
 
 @router.get('/{id}', response_model=ServiceResponse)
 async def get_service_by_id(
     id: int, 
     service: Service = Depends(ServiceDependency.get_depedency_service),
-    current_user: str = Depends()
 ):
-    return await service.get_service_by_id(id, current_user)
+    return await service.get_service_by_id(id)
 
 @router.post('/', response_model=ServiceResponse)
 async def create_service(
     server: ServiceCreate,
-    current_user: str = Depends(),
     service: Service = Depends(ServiceDependency.get_depedency_service)
 ):
-    return await service.create_service(server, current_user)
+    return await service.create_service(server)
 
 @router.put('/{id}', response_model=ServiceResponse)
 async def update_service(
     id: int, 
     server: ServiceUpdate,
-    current_user: str = Depends(),
     service: Service = Depends(ServiceDependency.get_depedency_service)
 ):
-    return await service.update_service(id, server, current_user)
+    return await service.update_service(id, server)
 
 @router.delete('/{id}', response_model=ServiceResponse)
 async def delete_service(
     id: int, 
-    current_user: str = Depends(),
     service: Service = Depends(ServiceDependency.get_depedency_service)
 ):
-    return await service.delete_service(id, current_user)
+    return await service.delete_service(id)
