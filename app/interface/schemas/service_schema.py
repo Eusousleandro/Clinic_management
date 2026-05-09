@@ -15,8 +15,11 @@ class ServiceUpdate(BaseModel):
     duration_minutes: int | None
     price: float | None
 
-class ServiceResponse(ServiceBase):
+class ServiceResponse(BaseModel):
     id: int
+    name: str
+    duration_minutes: int
+    price: float
 
     class Config:
         from_attributes = True

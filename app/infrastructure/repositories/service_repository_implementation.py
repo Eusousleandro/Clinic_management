@@ -17,7 +17,7 @@ class ServiceRepository(IServiceRepository):
         return self.db.query(Service).filter(Service.name == name).first()
 
     async def create(self, service_data: ServiceCreate):
-        new_service = Service(**service_data.dict())
+        new_service = Service(**service_data.model_dump())
         self.db.add(new_service)
         self.db.commit()
         self.db.refresh(new_service)
