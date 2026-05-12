@@ -1,4 +1,4 @@
-from app.domain.exceptions.exception_scheduling import (
+from app.interface.handler.exception_scheduling import (
     NotFoundScheduling,
     FindScheduling,
     AlreadyExistsScheduling,
