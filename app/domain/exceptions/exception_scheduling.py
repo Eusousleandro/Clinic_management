@@ -7,11 +7,11 @@ class FindScheduling(Exception):
 class AlreadyExistsScheduling(Exception):
     pass
 
-class CreateScheduling(Exception):
+class NotSucessCreateScheduling(Exception):
     pass
 
-class UpdateScheduling(Exception):
+class NotSucessUpdateScheduling(Exception):
     pass
 
-class DeleteScheduling(Exception):
+class NotSucessDeleteScheduling(Exception):
     pass
