@@ -1,11 +1,9 @@
-from fastapi import HTTPException, status
-
-from app.domain.exceptions.exception import (
-    AlreadyExistsHandleException, 
-    CreateHandleException, 
-    DeleteHandleException, 
-    FindHandleException, 
-    NotFoundHandleException, 
+from app.interface.handler.exception_service import (
+    NotFoundHandleException,
+    FindHandleException,
+    AlreadyExistsHandleException,
+    CreateHandleException,
+    DeleteHandleException,
     UpdateHandleException
 )
 

@@ -54,3 +54,11 @@ def Service_exception_handler(app):
             content={"detail": str(exc)}
         )
     
+    return {
+        notfound_handle_exception,
+        find_handle_exception,
+        already_exists_handle_exception,
+        create_handle_exception,
+        update_handle_exception,
+        delete_handle_exception
+    }
