@@ -1,13 +1,17 @@
 FROM python:3.11-slim
+FROM python:3.11-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
 
 WORKDIR /app
 
-RUN pip install poetry uvicorn fastapi sqlalchemy dotenv pymysql
+COPY requirements.txt .
 
-COPY pyproject.toml poetry.lock* ./
-COPY . .  
+RUN pip install --no-cache-dir -r requirements.txt
 
-RUN poetry config virtualenvs.create false
-RUN poetry install --no-interaction --no-ansi --no-root
+COPY . .
+
+EXPOSE 8000
 
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]

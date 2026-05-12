@@ -3,25 +3,26 @@ version: "3.9"
 services:
   api:
     build: .
-    container_name: clinic_manegement
+    container_name: clinic_management
     ports:
       - "8000:8000"
+    env_file:
+      - .env
     volumes:
       - .:/app
     depends_on:
       db:
         condition: service_healthy
     
-    environment:
-      DATABASE_URL: mysql+pymysql://root:883715@db:3306/clinic_db
+    networks:
+      - clinic_network
 
   db:
     image: mysql:8
     container_name: clinic_db
     restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: 883715
-      MYSQL_DATABASE: clinic_db
+    env_file:
+      - .env
     ports:
       - "3307:3306"
     volumes:
