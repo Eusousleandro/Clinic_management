@@ -19,7 +19,7 @@ class Scheduling:
     async def get_scheduling(self):
         schedulings = await self.repository.get_All()
         if not schedulings:
-            raise NotFoundScheduling()
+            raise NotFoundScheduling("No schedulings found")
         
         return [to_scheduling_response(s) for s in schedulings]
         
@@ -27,39 +27,39 @@ class Scheduling:
     async def get_scheduling_id(self, id: int):
         scheduling = await self.repository.get_user_id(id)
         if not scheduling:
-            raise FindScheduling()
+            raise FindScheduling("No scheduling found")
         
         return to_scheduling_response(scheduling)
     
     async def create_scheduling(self, id: int, scheduling: SchedulingCreate):
         scheduling_verify =  await self.repository.get_user_id(id)
         if scheduling_verify: 
-            raise AlreadyExistsScheduling()
+            raise AlreadyExistsScheduling("Scheduling already exists")
         
         created = await self.repository.create(scheduling)
         if not created:
-            raise NotSucessCreateScheduling()
+            raise NotSucessCreateScheduling("Failed to create scheduling")
         
         return to_scheduling_response(created)
     
     async def update_scheduling(self, id: int, scheduling: SchedulingUpdate):
         scheduling_verify =  await self.repository.get_user_id(id)
         if not scheduling_verify:
-            raise NotFoundScheduling()
+            raise NotFoundScheduling("No scheduling found")
         
         updated = await self.repository.update(id, scheduling)
         if not updated:
-            raise NotSucessUpdateScheduling()
+            raise NotSucessUpdateScheduling("Failed to update scheduling")
         
         return to_scheduling_response(updated)
     
     async def delete_scheduling(self, id: int):
         scheduling_verify = await self.repository.delete(id)
         if not scheduling_verify:
-            raise NotFoundScheduling()
+            raise NotFoundScheduling("No scheduling found")
         
         delete = await self.repository.delete(id)
         if not delete:
-            raise NotSucessDeleteScheduling()
+            raise NotSucessDeleteScheduling("Failed to delete scheduling")
         
         return to_scheduling_response(delete)
