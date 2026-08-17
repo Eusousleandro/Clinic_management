@@ -30,7 +30,7 @@ class UserService:
 
         return to_user_response(user)
 
-    async def create(self, user_data: UserCreate):
+    async def create_user(self, user_data: UserCreate):
         verify_user = await self.repository.get_user_id(user_data.id)
         if verify_user:
             raise AlreadyExistsUser("User already exist")
@@ -41,13 +41,13 @@ class UserService:
 
         return to_user_response(user_new)
 
-        async def update(self, user_data: UserUpdate):
-            verify_user = await self.repository.get_user_id()
+        async def update_user(self, id: int user_data: UserUpdate):
+            verify_user = await self.repository.get_user_id(id)
             if not verify_user:
                 raise FindUser("No found user")
             
-            update_user = await self.repository.update()
+            update = await self.repository.update()
             if not update_user:
                 raise NotSucessUpdateUser("Falied to update user")
 
-            return to_user_response(update_user)
+            return to_user_response(update)
