@@ -35,22 +35,22 @@ class UserService:
         if verify_user:
             raise AlreadyExistsUser("User already exist")
 
-        user_new = await self.repository.create(user_data)
-        if not user_new:
+        created = await self.repository.create(user_data)
+        if not created:
             raise NotSucessCreateUser("Falied to create user")
 
-        return to_user_response(user_new)
+        return to_user_response(created)
 
         async def update_user(self, id: int user_data: UserUpdate):
             verify_user = await self.repository.get_user_id(id)
             if not verify_user:
                 raise FindUser("No found user")
             
-            update = await self.repository.update()
+            updated = await self.repository.update()
             if not update_user:
                 raise NotSucessUpdateUser("Falied to update user")
 
-            return to_user_response(update)
+            return to_user_response(updated)
 
         async def delete_user(self, id: int):
             verify_user = await self.repository.get_user_id(id)
