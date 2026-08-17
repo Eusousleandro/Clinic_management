@@ -1,6 +1,5 @@
 import datetime
 
-
 class Scheduling:
     def __init__(self, id, patient_id, provider_id, date, time):
         self.id = id
