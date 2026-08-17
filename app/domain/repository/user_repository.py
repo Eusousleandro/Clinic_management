@@ -3,7 +3,7 @@ from typing import List, Optional
 
 from app.domain.entities.user import UserEntity
 
-def IUserRepository():
+def IUserRepository(ABC):
 
     @abstractmethod
     def get_All(self) -> List[UserEntity]:
