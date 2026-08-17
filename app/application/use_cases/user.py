@@ -51,3 +51,14 @@ class UserService:
                 raise NotSucessUpdateUser("Falied to update user")
 
             return to_user_response(update)
+
+        async def delete_user(self, id: int):
+            verify_user = await self.repository.get_user_id(id)
+            if not verify_user:
+                raise FindUser("No found user")
+
+            deleted = await self.repository.delete()
+            if not deleted: 
+                raise NotSucessDeleteUser("Falied to delete user")
+            
+            return to_user_response(deleted)
