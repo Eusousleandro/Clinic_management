@@ -8,6 +8,7 @@ from app.interface.handler.exception_user import (
     NotAuthenticationUser
 )
 
+from.app.infrastructure.repositories.user_repo_implementation import UserRepository
 from app.infrastructure.mappers.user_mapper import to_user_response
 from app.infrastructure.schemas.user_schema import UserCreate, UserUpdate
 
@@ -39,3 +40,14 @@ class UserService:
             raise NotSucessCreateUser("Falied to create user")
 
         return to_user_response(user_new)
+
+        async def update(self, user_data: UserUpdate):
+            verify_user = await self.repository.get_user_id()
+            if not verify_user:
+                raise FindUser("No found user")
+            
+            update_user = await self.repository.update()
+            if not update_user:
+                raise NotSucessUpdateUser("Falied to update user")
+
+            return to_user_response(update_user)
