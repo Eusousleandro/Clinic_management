@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import List, Optional
 
-from app.domain.entities.scheduling import SchedulingEntity
+from app.domain.entities.scheduling import Scheduling
 
 class ISchedulingRepository(ABC):
 
