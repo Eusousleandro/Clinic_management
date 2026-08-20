@@ -10,7 +10,7 @@ class ISchedulingRepository(ABC):
         pass
 
     @abstractmethod
-    def get_user_id(self, id: int) -> Optional[scheduling]:
+    def get_user_id(self, id: int) -> Optional[Scheduling]:
         pass
 
     @abstractmethod
