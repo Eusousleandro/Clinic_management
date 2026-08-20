@@ -10,4 +10,5 @@ class Scheduling:
 
     def __str__(self):
         return f"Scheduling(id={self.id}, patient_id={self.patient_id}, provider_id={self.provider_id}, date={self.date}, time={self.time})"
-    
+
+        
